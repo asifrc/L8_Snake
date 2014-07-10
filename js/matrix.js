@@ -3,7 +3,6 @@ var setMatrix = function(matrix) {
         $("#errors").text("Serial Port is not connected");
         return;
     }
-
     L8_SLCP.SetRGBMatrix(matrix);
 };
 
@@ -19,7 +18,6 @@ var solidMatrix = function(color) {
     }
 
     var matrix = new Array(8);
-
     for (var i = 0; i < 8; i++) {
         matrix[i] = new Array(8);
 
@@ -27,7 +25,6 @@ var solidMatrix = function(color) {
             matrix[i][j] = color;
         }
     }
-
     return matrix;
 };
 
@@ -42,5 +39,13 @@ var failMatrix = function() {
 };
 
 var passMatrix = function() {
-  return solidMatrix(Color.WHITNEY);
+  var matrix = solidMatrix(Color.GREEN);
+  for (var i = 1; i < 7; i++) {
+    matrix[i][1] = Color.WHITE;
+    matrix[1][i] = Color.WHITE;
+    matrix[4][i] = Color.WHITE;
+  }
+  matrix[2][6] = Color.WHITE;
+  matrix[3][6] = Color.WHITE;
+  return matrix;
 };

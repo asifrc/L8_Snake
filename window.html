@@ -11,24 +11,17 @@
     <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <input id="travis_url" type="text" /><button id="start_poll">Submit</button>
+  <input id="travis_url" type="text" /><button id="start_poll">Get Build Status</button>
 
   <button id="turnon">Test</button>
+  <button id="pass">Pass</button>
+  <button id="fail">Fail</button>
   <button id="turnoff">Off</button>
-  <button id="animation">Animate</button>
 
   <section>
       <label>Connection:</label>
       <select id="serial_ports"></select> <input id="btn_serial_connect" type="button" value="Connect"> <span id="serial_status" class="serial-status"></span>
   </section>
-  
-  <section>
-      <label>RGB:</label>
-      <input id="r" type="text">
-      <input id="g" type="text">
-      <input id="b" type="text">
-      <button id="btnColor">Set Color</button>
-      <button id="btnStop">Stop!</button>
 
   <p id="errors"></p>
 </body>

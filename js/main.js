@@ -56,30 +56,25 @@ $(document).on("click", "#turnoff", function() {
     L8_SLCP.ClearRGBMatrix(false);
 });
 
-var red, green, blue;
+$(document).on("click", "#pass", function() {
+    if( !L8_serialPort.isConnected ) {
+        $("#errors").text("Serial Port is not connected");
+        return;
+    }
+
+    L8_SLCP.SetRGBMatrix(passMatrix());
+});
+
+$(document).on("click", "#fail", function() {
+    if( !L8_serialPort.isConnected ) {
+        $("#errors").text("Serial Port is not connected");
+        return;
+    }
+
+    L8_SLCP.SetRGBMatrix(failMatrix());
+});
+
 
 var changeColor = function() {
   L8_SLCP.SetRGBMatrix(solidMatrix(new Color(red,green,blue)));
 };
-
-var incrColor = function() {
-  red = (red+1)%16;
-  green = (green+2)%16;
-  blue = (blue+3)%16;
-  $('#r').val(red);
-  $('#g').val(green);
-  $('#b').val(blue);
-  changeColor();
-};
-
-$(document).on("click", "#btnColor", function() {
-  red = parseInt($('#r').val());
-  green = parseInt($('#g').val());
-  blue = parseInt($('#b').val());
-  
-  setInterval(incrColor, 500);
-});
-
-$(document).on("click", "#btnStop", function() {
-  clearInterval();
-});
