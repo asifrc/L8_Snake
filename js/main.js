@@ -19,23 +19,47 @@ $(function() {
 
 
 $(document).on("click", "#start_poll", function() {
-    var repo = $("#travis_url").val();
+    // var repo = $("#travis_url").val();
+
+    // $.ajax({
+    //     url: 'https://api.travis-ci.org/repos/' + repo + '/builds',
+    //     headers: {
+    //         "Accept": 'application/vnd.travis-ci.2+json'
+    //     }
+    // }).done(function(data) {
+    //     if( data.builds[0].state == "passed" ) {
+    //         setMatrix(passMatrix());
+    //     }
+    //     else {
+    //         setMatrix(failMatrix()); //red
+    //     }
+    // });
+
+    var project = $("#snap_url").val();
 
     $.ajax({
-        url: 'https://api.travis-ci.org/repos/' + repo + '/builds',
-        headers: {
-            "Accept": 'application/vnd.travis-ci.2+json'
-        }
-    }).done(function(data) {
-        if( data.builds[0].state == "passed" ) {
-            setMatrix(passMatrix());
-        }
-        else {
-            setMatrix(failMatrix()); //red
-        }
+        type: 'GET',
+        url: project + '/cctray.xml',
+        datatype: 'xml',
+        success: parseXml
     });
 
 });
+
+function parseXml(xml)
+{
+  //find every Project and print the Build Status 
+  $(xml).find("Project").each(function()
+  {
+    if($(this).attr("lastBuildStatus") == "Success"){
+        setMatrix(passMatrix());
+    }
+    else {
+        setMatrix(failMatrix());
+    }
+  });
+
+}
 
 $(document).on("click", "#turnon", function() {
     if( !L8_serialPort.isConnected ) {
