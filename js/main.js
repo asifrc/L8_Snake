@@ -34,15 +34,14 @@ function parseXml(xml)
 {
   $(xml).find("Project").each(function()
   {
-    if($(this).attr("lastBuildStatus") == "Success"){
-        setMatrix(passMatrix());
-    }
-    else {
+    if($(this).attr("lastBuildStatus") == "Failure"){
         setMatrix(failMatrix());
     }
+    else{
+        setMatrix(passMatrix());
+    }
   });
-
-}
+};
 
 $(document).on("click", "#turnon", function() {
     if( !L8_serialPort.isConnected ) {
@@ -70,6 +69,15 @@ $(document).on("click", "#pass", function() {
     }
 
     L8_SLCP.SetRGBMatrix(passMatrix());
+});
+
+$(document).on("click", "#build", function() {
+    if( !L8_serialPort.isConnected ) {
+        $("#errors").text("Serial Port is not connected");
+        return;
+    }
+
+    L8_SLCP.SetRGBMatrix(buildMatrix());
 });
 
 $(document).on("click", "#fail", function() {
