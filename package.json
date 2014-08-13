@@ -1,0 +1,27 @@
+{
+  "name": "L8_Snake",
+  "version": "0.0.0",
+  "description": "![L8smartlight](http://corcheaymedia.com/l8/wp-content/plugins/wp-l8-styles/images/logo.png) # L8 smartlight JavaScript SDK V1.0",
+  "main": "background.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/_mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asifrc/L8_Snake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asifrc/L8_Snake/issues"
+  },
+  "homepage": "https://github.com/asifrc/L8_Snake",
+  "dependencies": {
+    "should": "~4.0.4",
+    "mocha": "~1.21.4"
+  }
+}
