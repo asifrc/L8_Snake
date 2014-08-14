@@ -122,6 +122,18 @@ $(document).on("click", "#snake_left", function() {
 $(document).on("click", "#snake_right", function() {
     snake.moveRight();
 });
+$(document).on("keydown", "#snake_control", function(event) {
+    event.preventDefault();
+    var LEFT_ARROW = 37;
+    var UP_ARROW = 38;
+    var RIGHT_ARROW = 39;
+    var DOWN_ARROW = 40;
+    console.log("CONTROL: " + event.which)
+    if (event.which == LEFT_ARROW) { snake.moveLeft(); }
+    if (event.which == RIGHT_ARROW) { snake.moveRight(); }
+    if (event.which == UP_ARROW) { snake.moveUp(); }
+    if (event.which == DOWN_ARROW) { snake.moveDown(); }
+});
 
 var changeColor = function() {
   L8_SLCP.SetRGBMatrix(solidMatrix(new Color(red,green,blue)));
