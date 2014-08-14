@@ -91,15 +91,36 @@ $(document).on("click", "#fail", function() {
 
 var snake;
 var board;
+var gameLoop;
 $(document).on("click", "#start_snake", function() {
     snake = new Snake(new Color(0,15,0))
     board = new Board(L8_SLCP, new Color(0,0,0), snake);
     board.draw();
-    snake.move();
+    gameLoop = setInterval(function() {
+        snake.move();
+        board.draw();
+    }, 500);
 });
+
+$(document).on("click", "#stop_snake", function() {
+    clearInterval(gameLoop);
+});
+
 $(document).on("click", "#move_snake", function() {
-    board.draw();
     snake.move();
+    board.draw();
+});
+$(document).on("click", "#snake_up", function() {
+    snake.moveUp();
+});
+$(document).on("click", "#snake_down", function() {
+    snake.moveDown();
+});
+$(document).on("click", "#snake_left", function() {
+    snake.moveLeft();
+});
+$(document).on("click", "#snake_right", function() {
+    snake.moveRight();
 });
 
 var changeColor = function() {
