@@ -89,9 +89,17 @@ $(document).on("click", "#fail", function() {
     L8_SLCP.SetRGBMatrix(failMatrix());
 });
 
+var snake;
+var board;
 $(document).on("click", "#start_snake", function() {
-    var board = new Board(L8_SLCP, new Color(0,15,0));
+    snake = new Snake(new Color(0,15,0))
+    board = new Board(L8_SLCP, new Color(0,0,0), snake);
     board.draw();
+    snake.move();
+});
+$(document).on("click", "#move_snake", function() {
+    board.draw();
+    snake.move();
 });
 
 var changeColor = function() {

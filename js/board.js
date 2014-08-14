@@ -1,14 +1,26 @@
-var Board = function(l8, bgcolor) {
+var Board = function(l8, bgcolor, snake) {
 	var self = this
-	var board = new Array(8);
-	for (var i = 0; i < 8; i++) {
-		board[i] = new Array(8);
+	
+	var X = 0;
+	var Y = 1;
+	var BOARD_LENGTH = 8;
+	
+	var board = new Array(BOARD_LENGTH);
+	var resetBoard = function(color) {
+		for (var i = 0; i < BOARD_LENGTH; i++) {
+			board[i] = new Array(BOARD_LENGTH);
 
-		for (var j = 0; j < 8; j++) {
-			board[i][j] = bgcolor;
+			for (var j = 0; j < BOARD_LENGTH; j++) {
+				board[i][j] = color;
+			}
 		}
 	}
+	resetBoard(bgcolor);
+
 	self.draw = function() {
+		console.log(snake);
+		resetBoard(bgcolor);
+		board[snake.head[X]][snake.head[Y]] = snake.marker;
 		l8.SetRGBMatrix(board)
 	}
 }

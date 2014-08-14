@@ -12,11 +12,12 @@ var compareXY = function(actual, expected) {
 
 describe("Snake", function() {
 	describe("move", function(done) {
-		it("should move the head from [0,0], to [1,0]", function() {
+		it("should move the head from [0,0], to [0,1] on Right", function() {
 			var snake = new Snake();
 			compareXY(snake.head, [0,0]);
+			snake.moveRight();
 			snake.move();
-			compareXY(snake.head, [1,0]);
+			compareXY(snake.head, [0,1]);
 		})
 	})
 });
