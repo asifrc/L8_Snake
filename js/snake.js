@@ -13,13 +13,20 @@ var Snake = function(color) {
 	self.head = [0,0];
 	self.tail = [];
 	self.direction = RIGHT;
+	self.extend = true;
 	self.move = function() {
 		var newHead = [];
 		newHead[X] = self.head[X] + self.direction[X];
 		newHead[Y] = self.head[Y] + self.direction[Y];
-		self.head = newHead;
+		
 		self.tail.unshift(self.head);
-		self.tail.pop();
+		self.head = newHead;
+		console.log('before' + JSON.stringify(self.head) + JSON.stringify(self.tail));
+		if (self.tail.length > 4) {
+			self.tail.pop();
+			console.log('after' + JSON.stringify(self.head) + JSON.stringify(self.tail));
+		}
+		self.extend = false;
 	};
 	var changeDirection = function(direction) {
 		self.direction = direction;

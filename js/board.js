@@ -17,10 +17,17 @@ var Board = function(l8, bgcolor, snake) {
 	}
 	resetBoard(bgcolor);
 
+	var mark = function(coordinates, color) {
+		board[coordinates[X]][coordinates[Y]] = color;
+	};
+
 	self.draw = function() {
 		console.log(snake);
 		resetBoard(bgcolor);
-		board[snake.head[X]][snake.head[Y]] = snake.marker;
+		mark(snake.head, snake.marker)
+		snake.tail.map(function(tail) {
+			mark(tail, snake.marker);
+		});
 		l8.SetRGBMatrix(board)
 	}
 }
