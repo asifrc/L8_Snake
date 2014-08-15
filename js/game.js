@@ -3,6 +3,9 @@ var Game = function(board, snake) {
 
 	var GAME_SPEED = 500;
 
+	var X = 0;
+	var Y = 1;
+
 	self.interval = null;
 
 	self.start = function() {
@@ -16,6 +19,11 @@ var Game = function(board, snake) {
 
 	self.loop = function() {
 		snake.move();
+		if (hitTarget()) {
+			snake.grow();
+			board.newTarget();
+		};
+
 		if (lost()) {
 			self.stop();
 			$('#fail').trigger('click');
@@ -23,6 +31,10 @@ var Game = function(board, snake) {
 		else {
         	board.draw();
 		}
+	}
+
+	var hitTarget = function() {
+		return (snake.head[X] == board.target()[X] && snake.head[Y] == board.target()[Y]);
 	}
 
 	var lost = function() {
