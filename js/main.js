@@ -100,6 +100,7 @@ $(document).on("click", "#start_snake", function() {
         snake.move();
         board.draw();
     }, 500);
+    $('#snake_control').focus();
 });
 
 $(document).on("click", "#stop_snake", function() {
@@ -110,17 +111,9 @@ $(document).on("click", "#move_snake", function() {
     snake.move();
     board.draw();
 });
-$(document).on("click", "#snake_up", function() {
-    snake.moveUp();
-});
-$(document).on("click", "#snake_down", function() {
-    snake.moveDown();
-});
-$(document).on("click", "#snake_left", function() {
-    snake.moveLeft();
-});
-$(document).on("click", "#snake_right", function() {
-    snake.moveRight();
+$(document).on("click", "#grow_snake", function() {
+    snake.grow();
+    $('#snake_control').focus();
 });
 $(document).on("keydown", "#snake_control", function(event) {
     event.preventDefault();

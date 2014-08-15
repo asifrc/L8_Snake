@@ -13,7 +13,7 @@ var Snake = function(color) {
 	self.head = [0,0];
 	self.tail = [];
 	self.direction = RIGHT;
-	self.extend = true;
+	var extend = true;
 	self.move = function() {
 		var newHead = [];
 		newHead[X] = self.head[X] + self.direction[X];
@@ -22,12 +22,15 @@ var Snake = function(color) {
 		self.tail.unshift(self.head);
 		self.head = newHead;
 		console.log('before' + JSON.stringify(self.head) + JSON.stringify(self.tail));
-		if (self.tail.length > 4) {
+		if (!extend) {
 			self.tail.pop();
 			console.log('after' + JSON.stringify(self.head) + JSON.stringify(self.tail));
 		}
-		self.extend = false;
+		extend = false;
 	};
+	self.grow = function() {
+		extend = true;
+	}
 	var changeDirection = function(direction) {
 		self.direction = direction;
 	}
