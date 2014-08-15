@@ -45,6 +45,14 @@ var Snake = function(color) {
 		if (self.head[X] >= board.size() || self.head[Y] >= board.size()) {
 			return false;
 		}
+		
+		var selfCollision = self.tail.reduce(function(prev, curr) {
+			return prev || (curr[X]==self.head[X] && curr[Y]==self.head[Y]);
+		}, false);
+		if (selfCollision) {
+			return false;
+		};
+
 		return true;
 	}
 };

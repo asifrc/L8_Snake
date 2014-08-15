@@ -1,7 +1,7 @@
 var Game = function(board, snake) {
 	var self = this;
 
-	var GAME_SPEED = 500;
+	var GAME_SPEED = 350;
 
 	var X = 0;
 	var Y = 1;

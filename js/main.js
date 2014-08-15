@@ -94,7 +94,7 @@ var board;
 var game;
 $(document).on("click", "#start_snake", function() {
     snake = new Snake(new Color(0,15,0))
-    board = new Board(L8_SLCP, new Color(0,0,0), snake);
+    board = new Board(L8_SLCP, new Color(0,0,5), snake);
     game = new Game(board, snake);
     game.start();
     $('#snake_control').focus();
@@ -104,10 +104,6 @@ $(document).on("click", "#stop_snake", function() {
     game.stop();
 });
 
-$(document).on("click", "#move_snake", function() {
-    snake.move();
-    board.draw();
-});
 $(document).on("click", "#grow_snake", function() {
     snake.grow();
     $('#snake_control').focus();
