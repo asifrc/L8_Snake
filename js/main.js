@@ -93,10 +93,13 @@ var snake;
 var board;
 var game;
 $(document).on("click", "#start_snake", function() {
+    //Start Game
     snake = new Snake(new Color(0,15,0))
-    board = new Board(L8_SLCP, new Color(0,0,5), snake);
+    board = new Board(L8_SLCP, new Color(0,0,1), snake);
     game = new Game(board, snake);
     game.start();
+
+
     $('#snake_control').focus();
 });
 
@@ -114,7 +117,7 @@ $(document).on("keydown", "#snake_control", function(event) {
     var UP_ARROW = 38;
     var RIGHT_ARROW = 39;
     var DOWN_ARROW = 40;
-    console.log("CONTROL: " + event.which)
+
     if (event.which == LEFT_ARROW) { snake.moveLeft(); }
     if (event.which == RIGHT_ARROW) { snake.moveRight(); }
     if (event.which == UP_ARROW) { snake.moveUp(); }

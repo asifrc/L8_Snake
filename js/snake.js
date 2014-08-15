@@ -21,10 +21,8 @@ var Snake = function(color) {
 		
 		self.tail.unshift(self.head);
 		self.head = newHead;
-		console.log('before' + JSON.stringify(self.head) + JSON.stringify(self.tail));
 		if (!extend) {
 			self.tail.pop();
-			console.log('after' + JSON.stringify(self.head) + JSON.stringify(self.tail));
 		}
 		extend = false;
 	};

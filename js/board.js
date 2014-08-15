@@ -37,13 +37,15 @@ var Board = function(l8, bgcolor, snake) {
 	self.newTarget();
 
 	self.draw = function() {
-		console.log(snake);
 		resetBoard(bgcolor);
+
 		mark(target, TARGET_COLOR);
+
 		mark(snake.head, snake.marker)
 		snake.tail.map(function(tail) {
 			mark(tail, snake.marker);
 		});
+		
 		l8.SetRGBMatrix(board)
 	}
 }
