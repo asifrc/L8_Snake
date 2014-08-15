@@ -4,6 +4,8 @@ var Board = function(l8, bgcolor, snake) {
 	var X = 0;
 	var Y = 1;
 	var BOARD_LENGTH = 8;
+
+	self.size = function() { return BOARD_LENGTH; };
 	
 	var board = new Array(BOARD_LENGTH);
 	var resetBoard = function(color) {

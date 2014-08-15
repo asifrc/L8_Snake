@@ -91,20 +91,17 @@ $(document).on("click", "#fail", function() {
 
 var snake;
 var board;
-var gameLoop;
+var game;
 $(document).on("click", "#start_snake", function() {
     snake = new Snake(new Color(0,15,0))
     board = new Board(L8_SLCP, new Color(0,0,0), snake);
-    board.draw();
-    gameLoop = setInterval(function() {
-        snake.move();
-        board.draw();
-    }, 500);
+    game = new Game(board, snake);
+    game.start();
     $('#snake_control').focus();
 });
 
 $(document).on("click", "#stop_snake", function() {
-    clearInterval(gameLoop);
+    game.stop();
 });
 
 $(document).on("click", "#move_snake", function() {

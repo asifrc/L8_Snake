@@ -38,6 +38,15 @@ var Snake = function(color) {
 	self.moveDown = function() { changeDirection(DOWN); };
 	self.moveLeft = function() { changeDirection(LEFT); };
 	self.moveRight = function() { changeDirection(RIGHT); };
+	self.isAlive = function(board) {
+		if (self.head[X] < 0 || self.head[Y] < 0) {
+			return false;
+		}
+		if (self.head[X] >= board.size() || self.head[Y] >= board.size()) {
+			return false;
+		}
+		return true;
+	}
 };
 
 if (typeof module !== "undefined") {
